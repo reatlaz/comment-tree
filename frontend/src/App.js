@@ -23,7 +23,7 @@ const Comment = ({ data }) => {
     <div className='comments_container'>
       {data.map((parent, index) => {
         return (
-          <div key={parent.text}>
+          <div key={parent.created}>
             <div className='comments_item'>
               <div>
                 {parent.text}
