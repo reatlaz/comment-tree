@@ -47,7 +47,7 @@ cursor.execute(f'''
     INSERT INTO comments_comment (id, text, created, parent_id)
         VALUES {','.join(values)};
 ''', multi=True)
-
+conn.commit()
 for depth in range(1, 7):
     values = []
     next_q = deque()
@@ -65,6 +65,6 @@ for depth in range(1, 7):
         INSERT INTO comments_comment (id, text, created, parent_id)
             VALUES {','.join(values)};
     ''')
+    conn.commit()
 
-conn.commit()
 print(count)
