@@ -34,13 +34,13 @@ settings.configure()
 values = []
 q = deque()
 id = 1
-count = 0
+
 for _ in range(random.randint(100, 200)):
     text = ''.join(random.choice(letters) for _ in range(random.randint(4, 10)))
     values.append(f"({id}, '{text}', '{timezone.now()}', null)")
-    id += 1
     q.append(id)
-    count += 1
+    id += 1
+
 print(values)
 cursor.execute(f'''
     TRUNCATE TABLE comments_comment;
@@ -56,9 +56,8 @@ for depth in range(1, 7):
         for _ in range(random.randint(0, 3)):
             text = ''.join(random.choice(letters) for _ in range(random.randint(4, 10)))
             values.append(f"({id}, '{text}', '{timezone.now()}', {parent})")
-            id += 1
             next_q.append(id)
-            count += 1
+            id += 1
     q = next_q
 
     cursor.execute(f'''
