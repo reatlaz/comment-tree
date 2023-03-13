@@ -38,7 +38,8 @@ SECRET_KEY = get_secret('SECRET_KEY')
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'reatlaz.pythonanywhere.com'
+    'reatlaz.pythonanywhere.com',
+    '127.0.0.1'
 ]
 
 
@@ -51,7 +52,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'treebeard',
     'comments',
+
 ]
 
 MIDDLEWARE = [

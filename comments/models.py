@@ -1,16 +1,13 @@
 from django.db import models
 
-class Comment(models.Model):
+from treebeard.mp_tree import MP_Node
+
+class Comment(MP_Node):
     text = models.TextField(null=False)
-    created = models.DateTimeField(auto_now_add=True)
-    # grandparent = models.ForeignKey('self', null=True, related_name='child_replies', on_delete=models.SET(parent.parent))
-    parent = models.ForeignKey('self', null=True, related_name='replies', on_delete=models.CASCADE)
+    created = models.DateTimeField(blank=True, auto_now_add=True)
+    # parent = models.ForeignKey('self', null=True, related_name='replies', on_delete=models.CASCADE)
 
+    node_order_by = ['text']
 
-
-    class Meta:
-        ordering = ('created',)
-    
     def __str__(self):
-        return self.text if self.text else ''
-    
+        return 'Comment: {}'.format(self.text)
