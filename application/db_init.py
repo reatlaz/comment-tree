@@ -46,7 +46,7 @@ cursor.execute(f'''
     TRUNCATE TABLE comments_comment;
     INSERT INTO comments_comment (id, text, created, parent_id)
         VALUES {','.join(values)};
-''')
+''', multi=True)
 
 for depth in range(1, 7):
     values = []
