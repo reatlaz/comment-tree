@@ -44,10 +44,11 @@ for _ in range(random.randint(100, 200)):
 print(values)
 print()
 cursor.execute(f'''
-    TRUNCATE TABLE comments_comment;
+    TRUNCATE TABLE comments_comment;''')
+cursor.execute(f'''
     INSERT INTO comments_comment (id, text, created, parent_id)
         VALUES {','.join(values)};
-''', multi=True)
+''')
 conn.commit()
 for depth in range(1, 7):
     values = []
