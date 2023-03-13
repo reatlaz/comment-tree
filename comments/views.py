@@ -18,7 +18,7 @@ def delete_comment(request, comment_id):
     comment = get_object_or_404(Comment, id=comment_id)
     children = comment.get_children()
     for child in children:
-        child.move(comment)
+        child.move(comment, 'right')
 
     comment.delete()
 

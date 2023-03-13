@@ -1,10 +1,9 @@
-import logo from './logo.svg';
 import './App.css';
 
 import React, { useEffect, useState } from 'react';
 
 
-const Comment = ({ data }) => {
+const Comment = ({ comments }) => {
   const [isError, setIsError] = useState(false);
   const deleteComment = (id) => {
     fetch('/comments/' + id + '/', {
@@ -19,24 +18,26 @@ const Comment = ({ data }) => {
         setIsError(true)
       })
   }
-
   return (
     <div className='comments_container'>
       {isError ? <div>Ошибка подключения</div> :
-      data.map((parent, index) => {
+      comments.map((comment) => {
+        console.log(comment.id)
         return (
-          <div key={parent.data.created}>
+          <div key={comment.id}>
             <div className='comments_item'>
-              <div>
-                {parent.data.text}
+
+              <div className='comment-text'>
+                {comment.data.text}
               </div>
-              <div className='right-row'>
+
+              <div className='bottom-row'>
                 <div className='created'>
-                  {getTimeFromISOString(parent.data.created)}
+                  {getTimeFromISOString(comment.data.created)}
                 </div>
                 <div
                   className='delete-comment'
-                  onClick={() => deleteComment(parent.id)}
+                  onClick={() => deleteComment(comment.id)}
                 >
                   Удалить
                 </div>
@@ -44,7 +45,7 @@ const Comment = ({ data }) => {
 
             </div>
             <div>
-              {parent.children && <Comment data={parent.children} />}
+              {comment.children && <Comment comments={comment.children} />}
             </div>
           </div>
         );
@@ -55,7 +56,7 @@ const Comment = ({ data }) => {
 
 
 function App() {
-  const [comments, setComments] = useState(JSON.parse('{"data":[{"data":{"text":"Привет!"},"children":[{"data":{"text":"Идет","created":"2023-03-13 04:17:39.276496+03"},"children":[]},{"data":{"text":"загрузка"},"children":[{"data":{"text":"(возможно)"},"children":[]}]}]},{"data":{"text":"Это тестовый JSON на фронте"},"children":[]}]}').data);
+  const [comments, setComments] = useState(JSON.parse('{"data":[{"data":{"text":"Приветdfgdgfgdsf gdfsg dsfggdfgds dsagfsdafsadfsda dsaf sadf asdf sad fdsfggdfsgdfsgdsfgdfggd dgd!"},"children":[{"data":{"text":"Идет","created":"2023-03-13 04:17:39.276496+03"},"children":[{"data":{"text":"Привет!"},"children":[{"data":{"text":"Идет","created":"2023-03-13 04:17:39.276496+03"},"children":[]},{"data":{"text":"загрузка"},"children":[{"data":{"text":"(возможно)"},"children":[{"data":{"text":"загрузка"},"children":[{"data":{"text":"(возможно)"},"children":[]}]}]}]}]}]},{"data":{"text":"загрузка"},"children":[{"data":{"text":"(возможно)"},"children":[]}]}]},{"data":{"text":"Это тестовый JSON на фронте"},"children":[]}]}').data);
 
   const [isError, setIsError] = useState(false);
 
@@ -76,7 +77,7 @@ function App() {
     <div className="App">
         {isError ? <div>Ошибка сервера</div>:
         <div className="comments">
-          <Comment data={comments}/>
+          <Comment comments={comments}/>
         </div>
         }
     </div>

@@ -48,17 +48,22 @@
   width: 100%;
   font-size: calc(10px + 2vmin);
   color: white;
+  margin-left: -20px;
+
 }
 
+
 .comments_item {
-  background-color: #32363d;
+  background-color: #2e3642;
   display: flex;
-  flex-direction: row;
-  height: 80px;
-  width: calc(100% - 2opx);
-  padding-left: 20px;
+  flex-direction: column;
+  height: 90px;
+  width: calc(100% - 10px);
+  padding: 10px;
   border-radius: 10px;
   margin: 5px;
+  justify-content: space-between;
+
 }
 
 .delete-comment {
@@ -77,22 +82,36 @@
   background-color: red;
 }
 .comments_container {
-  padding-left: 40px;
-  width: calc(100% - 40px);
+  padding-left: 20px;
+  width: calc(100% - 20px);
 
+}
+.comment-text {
+  font-size: 18px;
+  padding: 5px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-height: 40px;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  text-align: left;
 }
 
 .created {
   padding: 4px;
+  color: #e8e8e8;
   font-size: 16px;
+  max-width: 140px;
+  max-height: 25px;
 }
 
-.right-row  {
-  width: 140px;
-  margin: 10px 10px 10px auto;
+.bottom-row  {
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 .nesting-1 {
   margin-left: 20px;
