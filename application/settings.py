@@ -39,7 +39,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'reatlaz.pythonanywhere.com',
-    'localhost'
+    # 'localhost'
 ]
 
 
