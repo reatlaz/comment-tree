@@ -22,7 +22,7 @@ const Comment = ({ data }) => {
 
   return (
     <div className='comments_container'>
-      {isError ? <div>Ощибка подключения</div> :
+      {isError ? <div>Ошибка подключения</div> :
       data.map((parent, index) => {
         return (
           <div key={parent.data.created}>
