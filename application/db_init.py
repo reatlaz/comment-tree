@@ -1,4 +1,4 @@
-import psycopg2
+import mysql.connector
 import json, os
 import random
 import string
@@ -20,7 +20,7 @@ def get_secret(setting, secrets=secrets):
         error_msg = 'Set the {0} environment variable'.format(setting)
         raise ImproperlyConfigured(error_msg)
     
-conn = psycopg2.connect(
+conn = mysql.connector.connect(
     host=get_secret('DATABASES_HOST'),
     database=get_secret('DATABASES_NAME'),
     user=get_secret('DATABASES_USER'),
