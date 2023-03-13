@@ -7,7 +7,6 @@ class Comment(MP_Node):
     created = models.DateTimeField(blank=True, auto_now_add=True)
     # parent = models.ForeignKey('self', null=True, related_name='replies', on_delete=models.CASCADE)
 
-    node_order_by = ['text']
 
     def __str__(self):
         return 'Comment: {}'.format(self.text)
