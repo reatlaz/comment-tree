@@ -42,6 +42,7 @@ for _ in range(random.randint(100, 200)):
     id += 1
 
 print(values)
+print()
 cursor.execute(f'''
     TRUNCATE TABLE comments_comment;
     INSERT INTO comments_comment (id, text, created, parent_id)
@@ -59,11 +60,10 @@ for depth in range(1, 7):
             next_q.append(id)
             id += 1
     q = next_q
+    print(values)
 
     cursor.execute(f'''
         INSERT INTO comments_comment (id, text, created, parent_id)
             VALUES {','.join(values)};
     ''')
     conn.commit()
-
-print(count)
