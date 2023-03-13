@@ -41,7 +41,7 @@ for _ in range(random.randint(100, 200)):
     id += 1
     q.append(id)
     count += 1
-
+print(values)
 cursor.execute(f'''
     TRUNCATE TABLE comments_comment;
     INSERT INTO comments_comment (id, text, created, parent_id)
