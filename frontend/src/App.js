@@ -11,7 +11,7 @@ const Comment = ({ comments }) => {
     })
       .then(resp => resp.json())
       .then(data => {
-        console.log('deletion response: ', data);
+        console.log('deleted: ', data);
         window.location.reload(false);
       })
       .catch(err => {
@@ -22,7 +22,6 @@ const Comment = ({ comments }) => {
     <div className='comments_container'>
       {isError ? <div>Ошибка подключения</div> :
       comments.map((comment) => {
-        console.log(comment.id)
         return (
           <div key={comment.id}>
             <div className='comments_item'>
